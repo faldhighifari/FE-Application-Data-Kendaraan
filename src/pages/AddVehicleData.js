@@ -38,6 +38,21 @@ export default function AddVehicleData() {
         });
       };
 
+    // const [tahun_pembuatan, setTahun_pembuatan] = useState('');
+
+    // const handleNumChange = event => {
+    //     const limit = 4;
+    //     setTahun_pembuatan(event.target.value.slice(0, limit));
+    //     setForm({
+    //         ...form,
+    //         [event.target.name]: event.target.value,
+    //       });
+       
+    // }; 
+    
+
+
+
     const handleSubmit = useMutation(async (e) => {
         try {
             e.preventDefault();
@@ -150,12 +165,27 @@ export default function AddVehicleData() {
                             Tahun Pembuatan</b>
                         </label>
                     </div>
+                    {/* <input style={{ width: '400px' }}
+                        type="number"
+                        id="tahun_pembuatan"
+                        name="tahun_pembuatan"
+                        onChange={handleNumChange}
+                        value={tahun_pembuatan}
+                        // onInput="this.value=this.value.slice(0,this.maxLength)"
+                        // maxLength={4}
+                        required
+                        /> */}
+
                     <input style={{ width: '400px' }}
                         type="number"
                         id="tahun_pembuatan"
                         name="tahun_pembuatan"
                         onChange={handleChange}
-                        maxLength={4}
+                        onInput={(e) => {
+                            if (e.target.value.length > e.target.maxLength)
+                            e.target.value = e.target.value.slice(0,e.target.maxLength);
+                         }}
+                        maxLength = {4}
                         required
                         />
 

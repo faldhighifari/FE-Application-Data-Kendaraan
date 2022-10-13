@@ -185,16 +185,21 @@ export default function UpdateVehicleData() {
                             <b>
                             Tahun Pembuatan</b>
                         </label>
-                    </div>
+                    </div>  
                     <input style={{ width: '400px' }}
                         type="number"
                         id="tahun_pembuatan"
                         name="tahun_pembuatan"
                         onChange={handleChange}
                         value={form.tahun_pembuatan}
-                        maxLength="4"
+                        onInput={(e) => {
+                          if (e.target.value.length > e.target.maxLength)
+                          e.target.value = e.target.value.slice(0,e.target.maxLength);
+                       }}
+                      maxLength = {4}
                         required
                         />
+
 
                     <div>
                         <label for="upload" className="mt-4">
